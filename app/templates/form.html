@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>Dados Cadastrais</h1>
+    </div>
+
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <div id="result"></div>
+        <form name="form" id="form" action="{% if db%}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post">
+            {% csrf_token %}
+            <!--{{form.as_p}}-->
+            <div class="form-group mt-4"><b>Nome:</b><br> {{form.nome}}</div>
+            <div class="form-group mt-4"><b>CPF:</b><br> {{form.cpf}}</div>
+            <div class="form-group mt-4"><b>RG:</b><br> {{form.rg}}</div>
+            <div class="form-group mt-4"><b>Data de Nascimento:</b> (Mês/Dia/Ano)<br> {{form.data_nasc}}</div>
+            <div class="form-group mt-4"><b>Telefone:</b><br> {{form.telefone}}</div>
+            <div class="form-group mt-4"><b>E-Mail:</b><br> {{form.email}}</div>
+            <br>
+            <h1>Endereço</h1>
+            <br>
+            <div class="form-group mt-4"><b>Rua:</b><br> {{form.rua}}</div>
+            <div class="form-group mt-4"><b>Numero:</b><br> {{form.numero}}</div>
+            <div class="form-group mt-4"><b>Complemento:</b><br> {{form.complemento}}</div>
+            <div class="form-group mt-4"><b>Bairro:</b><br> {{form.bairro}}</div>
+            <div class="form-group mt-4"><b>Cidade:</b><br> {{form.cidade}}</div>
+            <a href="/" class="btn btn-info">Voltar</a>
+            <input type="submit" class="btn btn-success" value="Salvar">
+        </form>
+    </div>
+        {% load static %}
+        <script src="{% static 'javascript.js' %}"></script>
+</body>
+</html>
